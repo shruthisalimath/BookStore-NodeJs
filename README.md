@@ -1,2 +1,2 @@
-# BookStore-NodeJs
-BookStore using NodeJs with REST API's.
+# JobPortal-NodeJs
+Job Portal using NodeJs with REST API's.
