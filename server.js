@@ -40,7 +40,7 @@ app.put('/jobs/:id', (req, res) => {
         res.status(404).json({ error: 'job not found' });
     } else {
         jobPosting[index] = {...jobPosting[index], ...updateJob };
-        res.json(updateJob);
+        res.json(jobPosting[index]);
     }
 });
 
@@ -51,7 +51,7 @@ app.delete('/jobs/:id', (req, res) => {
     res.status(404).json({ error: 'Job not found!'});
     } else {
         const deleteJob = jobPosting.splice(index, 1)[0];
-        res.json(jobPosting);
+        res.json(deleteJob);
     }
 });
 
