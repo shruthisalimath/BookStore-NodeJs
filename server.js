@@ -1,8 +1,13 @@
 //import express
 const express = require('express');
+const cors = require('cors');//imported CORS middleware to enable CORS for API routes
 
 //setting up express to create an app
 const app = express();
+
+//enabling CORS for all routes 
+app.use(cors());
+
 //configure to parse requests with JSON payloads
 app.use(express.json());
 
@@ -25,7 +30,7 @@ app.get('/jobs', (req,res) => {
 //get a single job posting by ID
 app.get('/jobs/:id', (req,res) => {
     const jobs = jobPosting.find((j) => j.id === parseInt(req.params.id));
-    if(!jobPosting) {
+    if(!jobs) {
         res.status(404).json({ error: 'Job not found' });
     } else {
         res.json(jobs);
@@ -56,7 +61,7 @@ app.delete('/jobs/:id', (req, res) => {
 });
 
 //sets initial port
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5001;
 //starts server to begin listening
 app.listen(PORT, () => {
     console.log(`server is running on port: ${PORT}`);
